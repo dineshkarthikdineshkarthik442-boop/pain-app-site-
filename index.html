@@ -4,39 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pain App</title>
+
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: Arial;
             background: #0f172a;
             color: white;
         }
+
         header {
-            padding: 20px;
-            text-align: center;
+            padding: 15px;
             background: #020617;
-            font-size: 24px;
+            text-align: center;
+            font-size: 20px;
             font-weight: bold;
         }
+
+        #chat {
+            padding: 15px;
+            height: 60vh;
+            overflow-y: auto;
+        }
+
+        .msg {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 70%;
+        }
+
+        .user {
+            background: #2563eb;
+            margin-left: auto;
+        }
+
+        .bot {
+            background: #1e293b;
+        }
+
+        #inputBox {
+            display: flex;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+        }
+
+        button {
+            padding: 10px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
         section {
-            padding: 50px 20px;
+            padding: 40px 20px;
             text-align: center;
         }
-        h1 {
-            font-size: 40px;
+
+        h2 {
+            margin-top: 30px;
         }
-        p {
-            max-width: 600px;
-            margin: auto;
-            line-height: 1.6;
-        }
-        .card {
-            background: #1e293b;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 500px;
-        }
+
         footer {
             background: #020617;
             padding: 20px;
@@ -45,64 +81,80 @@
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    Pain App
-</header>
+<header>Pain App (AI Assistant)</header>
 
+<!-- CHAT UI -->
+<div id="chat"></div>
+
+<div id="inputBox">
+    <input id="input" placeholder="Type a message...">
+    <button onclick="send()">Send</button>
+</div>
+
+<!-- BUSINESS CONTENT -->
 <section>
-    <h1>AI Assistant for Smart Living</h1>
+    <h2>About Pain App</h2>
     <p>
         Pain App is an AI-powered assistant designed to help users with daily tasks,
         automation, and intelligent conversations. It enhances productivity and simplifies digital interactions.
     </p>
-</section>
 
-<section>
+    <h2>How It Works</h2>
+    <p>
+        Users can interact with the AI assistant through chat and unlock premium features
+        using secure online payments.
+    </p>
+
     <h2>Our Services</h2>
+    <p>• AI Chat Assistance</p>
+    <p>• Task Automation</p>
+    <p>• Smart Productivity Tools</p>
 
-    <div class="card">
-        <h3>AI Chat</h3>
-        <p>Interact with an intelligent assistant for instant answers and help.</p>
-    </div>
-
-    <div class="card">
-        <h3>Automation</h3>
-        <p>Automate daily tasks and improve efficiency with smart tools.</p>
-    </div>
-
-    <div class="card">
-        <h3>Productivity Tools</h3>
-        <p>Organize your workflow and manage tasks effectively.</p>
-    </div>
-</section>
-
-<section>
     <h2>Contact Us</h2>
-    <p>Email: lordrimaru7@gmail.com</p>
+    <p>Email: support.painapp@gmail.com</p>
     <p>Location: India</p>
-</section>
 
-<section>
     <h2>Privacy Policy</h2>
     <p>
-        We respect your privacy. Pain App does not share your personal data with third parties.
-        All user data is handled securely and used only to improve services.
+        We respect your privacy. Pain App does not share user data with third parties.
+        All data is securely processed and used only to improve the service.
     </p>
-</section>
 
-<section>
     <h2>Terms & Conditions</h2>
     <p>
-        By using Pain App, you agree to use the service responsibly.
-        We are not liable for misuse of the platform or any damages caused.
+        By using Pain App, you agree to use the platform responsibly.
+        Any misuse or illegal activity is strictly prohibited.
     </p>
 </section>
 
 <footer>
     © 2026 Pain App. All rights reserved.
 </footer>
+
+<script>
+function send() {
+    let input = document.getElementById("input");
+    let chat = document.getElementById("chat");
+
+    if (input.value.trim() === "") return;
+
+    let userMsg = document.createElement("div");
+    userMsg.className = "msg user";
+    userMsg.innerText = input.value;
+    chat.appendChild(userMsg);
+
+    let botMsg = document.createElement("div");
+    botMsg.className = "msg bot";
+    botMsg.innerText = "AI response coming soon...";
+    chat.appendChild(botMsg);
+
+    input.value = "";
+    chat.scrollTop = chat.scrollHeight;
+}
+</script>
 
 </body>
 </html>
